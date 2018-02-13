@@ -6,3 +6,7 @@
  ANSWER NO.2
   To divide the application into smaller components and keep certain things separate.
  ANSWER NO.3
+  app.component.html has the content to make the nave bar work.
+  app.component.spec.ts defines the logic on how the nav bar is going to be implemented.
+  SparkJava server is certainly not the only thing doing routing. When we go to app.routes.ts 
+  we realize that this testscript file also has contribution to the server routing.
