@@ -4,3 +4,5 @@
   while compared to the .gitignore files in the gradle folder or the client folder which ignores
   different programs. Each .gitignore is just specific to their own sub directory. 
  ANSWER NO.2
+  To divide the application into smaller components and keep certain things separate.
+ ANSWER NO.3
