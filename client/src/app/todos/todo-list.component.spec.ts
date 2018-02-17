@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Observable} from 'rxjs/Observable';
-import {FormsModule} from '@angular/forms';
+/*import {FormsModule} from '@angular/forms';*/
 import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
 
 import 'rxjs/add/observable/of';
@@ -83,6 +83,7 @@ describe('Todo list', () => {
   it('doesn\'t contain a todo owner \'Jesus\'', () => {
     expect(todoList.todos.some((todo: Todo) => todo.owner === 'Jesus')).toBe(false);
   });
+});
 
   /*
 
