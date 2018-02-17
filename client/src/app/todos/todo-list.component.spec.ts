@@ -72,35 +72,21 @@ describe('Todo list', () => {
     expect(todoList.todos.length).toBe(3);
   });
 
-  it('contains a todo ownerd \'Chris\'', () => {
+  it('contains a todo owner \'Workman\'', () => {
     expect(todoList.todos.some((todo: Todo) => todo.owner === 'Workman')).toBe(true);
   });
 
-  it('contain a todo ownerd \'Jamie\'', () => {
-    expect(todoList.todos.some((todo: Todo) => todo.owner === 'Dawn')).toBe(true);
+  it('contain a todo owner \'Barry\'', () => {
+    expect(todoList.todos.some((todo: Todo) => todo.owner === 'Barry')).toBe(true);
   });
 
-  it('doesn\'t contain a todo ownerd \'Santa\'', () => {
-    expect(todoList.todos.some((todo: Todo) => todo.owner === 'Santa')).toBe(false);
-  });
-
-  it('has two todos that are false', () => {
-    expect(todoList.todos.filter((todo: Todo) => todo.status === false).length).toBe(2);
-  });
-  it('todo list filters by owner', () => {
-    expect(todoList.filteredTodos.length).toBe(3);
-    //////////////////////////////////////////////////////////////////////////////////////////////////
-    /*START FROM HERE*/
-
-    todoList.todoName = 'a';
-    const a: Observable<Todo[]> = todoList.refreshTodos();
-    a.do(x => Observable.of(x))
-      .subscribe(x => expect(todoList.filteredTodos.length).toBe(2));
+  it('doesn\'t contain a todo owner \'Jesus\'', () => {
+    expect(todoList.todos.some((todo: Todo) => todo.owner === 'Jesus')).toBe(false);
   });
 
   it('todo list filters by status', () => {
-    expect(todoList.filteredTodos.length).toBe(3);
-    todoList.todoAge = 37;
+    expect(todoList.filteredTodos.booleanValue).toBe(3);
+    todoList.todoStatus = 37;
     const a: Observable<Todo[]> = todoList.refreshTodos();
     a.do(x => Observable.of(x))
       .subscribe(x => expect(todoList.filteredTodos.length).toBe(2));
