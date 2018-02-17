@@ -84,6 +84,11 @@ describe('Todo list', () => {
     expect(todoList.todos.some((todo: Todo) => todo.owner === 'Jesus')).toBe(false);
   });
 
+  /*
+
+  MORE TESTS WE WILL WORK ON LATER IF WE HAVE TIME. THESE TESTS ARE KIND OF BASED ON THE TEST
+  ON THE User-list.component.spec.ts FILE.
+
   it('todo list filters by status', () => {
     expect(todoList.filteredTodos.booleanValue).toBe(3);
     todoList.todoStatus = 37;
@@ -140,3 +145,5 @@ describe('Misbehaving Todo List', () => {
     expect(todoList.todos).toBeUndefined();
   });
 });
+
+*/
