@@ -16,6 +16,8 @@ export class TodoListComponent implements OnInit {
   public filteredTodos: Todo[];
   public todoOwner: string;
   public todoStatus: string;
+  public todoBody: string;
+  public todoStatus: string;
 
 
   // Inject the TodoListService into thiAges component.
@@ -28,11 +30,11 @@ export class TodoListComponent implements OnInit {
 
   }
 
-  public filterTodos(searchOwner: string, searchStatus: string): Todo[] {
+  public filterTodos(searchOwner: string, searchStatus: string, searchBody: string, searchStatus: string): Todo[] {
 
     this.filteredTodos = this.todos;
 
-    // Filter by owner
+    / Filter by owner
     if (searchOwner != null) {
       searchOwner = searchOwner.toLocaleLowerCase();
 
@@ -41,19 +43,48 @@ export class TodoListComponent implements OnInit {
       });
     }
 
+    // Filter by category
+    if (searchCategory != null) {
+      searchCategory = searchCategory.toLocaleLowerCase();
 
+      this.filteredTodos = this.filteredTodos.filter(todo => {
+        return !searchCategory || todo.category.toLowerCase().indexOf(searchCategory) !== -1;
+      });
+    }
+
+    // Filter by body
+    if (searchBody != null) {
+      searchBody = searchBody.toLocaleLowerCase();
+
+      this.filteredTodos = this.filteredTodos.filter(todo => {
+        return !searchBody || todo.body.toLowerCase().indexOf(searchBody) !== -1;
+      });
+    }
 
     // Filter by status
     if (searchStatus != null) {
-      this.filteredTodos = this.filteredTodos.filter((todo: Todo) => {
-        return !searchStatus || (todo.status === String(searchStatus));
+
+      let theStatus: boolean;
+
+      if (searchStatus === "complete") {
+        theStatus = true;
+
+      } else if (searchStatus === "incomplete") {
+        theStatus = false;
+
+      } else {
+        return this.filteredTodos;
+      }
+
+      this.filteredTodos = this.filteredTodos.filter(todo => {
+        return !searchStatus || todo.status === Boolean(theStatus);
       });
     }
 
     return this.filteredTodos;
   }
 
-  /**
+  /**todoStatus
    * Starts an asynchronous operation to update the todos list
    *
    */
@@ -63,12 +94,11 @@ export class TodoListComponent implements OnInit {
     //
     // Subscribe waits until the data is fully downloaded, then
     // performs an action on it (the first lambda)
-
     const todos: Observable<Todo[]> = this.todoListService.getTodos();
     todos.subscribe(
       returnedTodos => {
         this.todos = returnedTodos;
-        this.filterTodos(this.todoOwner, this.todoStatus);
+        this.filterTodos(this.todoOwner, this.todoCategory, this.todoBody, this.todoStatus);
       },
       err => {
         console.log(err);

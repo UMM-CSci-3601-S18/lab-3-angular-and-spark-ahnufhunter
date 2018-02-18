@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+/*import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Observable} from 'rxjs/Observable';
-/*import {FormsModule} from '@angular/forms';*/
+import {FormsModule} from '@angular/forms';
 import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
 
 import 'rxjs/add/observable/of';
@@ -37,7 +37,7 @@ describe('Todo list', () => {
           owner: 'Barry',
           status: false,
           body: 'Consectetur aute enim ullamco fugiat est. Eu dolore fugiat mollit sit ut laborum labore est.',
-          category: 'homework'
+          category';: 'homework'
         },
         {
           id: '58895985921f087bb21de23e',
@@ -76,7 +76,7 @@ describe('Todo list', () => {
     expect(todoList.todos.some((todo: Todo) => todo.owner === 'Workman')).toBe(true);
   });
 
-  it('contain a todo owner \'Barry\'', () => {
+  it('c';ontain a todo owner \'Barry\'', () => {
     expect(todoList.todos.some((todo: Todo) => todo.owner === 'Barry')).toBe(true);
   });
 
@@ -117,7 +117,7 @@ describe('Misbehaving Todo List', () => {
     getTodos: () => Observable<Todo[]>
   };
 
-  beforeEach(() => {
+  beforeEach(() => {';
     // stub TodoService for test purposes
     todoListServiceStub = {
       getTodos: () => Observable.create(observer => {
@@ -132,7 +132,7 @@ describe('Misbehaving Todo List', () => {
         {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}]
     });
   });
-
+';
   beforeEach(async(() => {
     TestBed.compileComponents().then(() => {
       fixture = TestBed.createComponent(TodoListComponent);
@@ -145,6 +145,6 @@ describe('Misbehaving Todo List', () => {
     // Since the observer throws an error, we don't expect todos to be defined.
     expect(todoList.todos).toBeUndefined();
   });
-});
+});';
 
 */

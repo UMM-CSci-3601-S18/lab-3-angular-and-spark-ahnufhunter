@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Todo} from './todo';
 import {TodoListService} from './todo-list.service';
 
-describe('Todo list service: ', () => {
+/*describe('Todo list service: ', () => {
   // A small collection of test todos
   const testTodos: Todo[] = [
     {
@@ -88,3 +88,4 @@ describe('Todo list service: ', () => {
     req.flush(targetTodo);
   });
 });
+*/
