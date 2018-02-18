@@ -15,9 +15,9 @@ export class TodoListComponent implements OnInit {
   public todos: Todo[];
   public filteredTodos: Todo[];
   public todoOwner: string;
-  public todoStatus: string;
+  public todoStatus: boolean;
   public todoBody: string;
-  public todoStatus: string;
+  public todoCategory: string;
 
 
   // Inject the TodoListService into thiAges component.
@@ -30,11 +30,11 @@ export class TodoListComponent implements OnInit {
 
   }
 
-  public filterTodos(searchOwner: string, searchStatus: string, searchBody: string, searchStatus: string): Todo[] {
+  public filterTodos(searchOwner: string, searchStatus: string, searchBody: string, searchCategory: string): Todo[] {
 
     this.filteredTodos = this.todos;
 
-    / Filter by owner
+    // Filter by owner
     if (searchOwner != null) {
       searchOwner = searchOwner.toLocaleLowerCase();
 
@@ -63,21 +63,8 @@ export class TodoListComponent implements OnInit {
 
     // Filter by status
     if (searchStatus != null) {
-
-      let theStatus: boolean;
-
-      if (searchStatus === "complete") {
-        theStatus = true;
-
-      } else if (searchStatus === "incomplete") {
-        theStatus = false;
-
-      } else {
-        return this.filteredTodos;
-      }
-
-      this.filteredTodos = this.filteredTodos.filter(todo => {
-        return !searchStatus || todo.status === Boolean(theStatus);
+      this.filteredTodos = this.filteredTodos.filter((todo: Todo) => {
+        return !searchStatus || (todo.status === searchStatus);
       });
     }
 
