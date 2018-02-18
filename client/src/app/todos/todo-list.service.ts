@@ -13,7 +13,12 @@ export class TodoListService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getTodos(): Observable<Todo[]> {
+//This is the function that implements the parameters give and sorts the data.
+
+  getTodos(sortBy?: string): Observable<Todo[]> {
+    if (sortBy) {
+      return this.httpClient.get<Todo[]>(this.todoUrl + "?orderBy=" + sortBy);
+    }
     return this.httpClient.get<Todo[]>(this.todoUrl);
   }
 
