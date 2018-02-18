@@ -9,6 +9,9 @@
 }
 
 #list-title {
-  padding-right: 14px;
+  padding-right: 10px;
 }
 
+#todo-list-title{
+  color: red;
+}
