@@ -15,3 +15,25 @@
 #todo-list-title{
   color: red;
 }
+
+#todoOwner{
+  color: blue;
+}
+
+mat-expansion-panel{
+  background-color: orange;
+}
+
+mat-panel-description{
+  color: green;
+}
+
+mat-card{
+  background-color: purple;
+}
+
+mat-card-content{
+  background-color: yellow;
+}
+
+
