@@ -19,23 +19,23 @@ describe('Todo component', () => {
     todoListServiceStub = {
       getTodoById: (todoId: string) => Observable.of([
         {
-          id: "58895985a22c04e761776d54",
-          owner: "Blanche",
-          status: 'false',
-          body: "In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.",
+          id: "588959850599df780df04d5d",
+          owner: "Dawn",
+          status: true,
+          body: "Deserunt voluptate nulla minim amet in do. Adipisicing magna fugiat tempor fugiat irure aute voluptate.",
           category: "software design"
         },
         {
           id: "58895985c1849992336c219b",
           owner: "Fry",
-          status: 'false',
+          status: false,
           body: "Ipsum esse est ullamco magna tempor anim laborum non officia deserunt veniam commodo. Aute minim incididunt ex commodo.",
           category: "video games"
         },
         {
           id: "58895985847a6c1445ec4048",
           owner: "Barry",
-          status: 'true',
+          status: true,
           body: "Deserunt velit reprehenderit deserunt sunt excepteur sit eu eiusmod in voluptate aute minim mollit. Esse aliqua esse officia do proident non consequat non mollit.",
           category: "homework"
         },
@@ -56,10 +56,10 @@ describe('Todo component', () => {
   }));
 
   it('can retrieve Blanche by ID', () => {
-    todoComponent.setId('Blanche');
+    todoComponent.setId('58895985a22c04e761776d54');
     expect(todoComponent.todo).toBeDefined();
     expect(todoComponent.todo.owner).toBe('Blanche');
-    expect(todoComponent.todo.status).toBe('false');
+    expect(todoComponent.todo.status).toBe(false);
     expect(todoComponent.todo.body).toBe('In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.');
     expect(todoComponent.todo.category).toBe('software design');
 
@@ -69,19 +69,11 @@ describe('Todo component', () => {
     todoComponent.setId('58895985c1849992336c219b');
     expect(todoComponent.todo).toBeDefined();
     expect(todoComponent.todo.owner).toBe('Fry');
-    expect(todoComponent.todo.status).toBe('false');
+    expect(todoComponent.todo.status).toBe(false);
     expect(todoComponent.todo.body).toBe('Ipsum esse est ullamco magna tempor anim laborum non officia deserunt veniam commodo. Aute minim incididunt ex commodo.');
     expect(todoComponent.todo.category).toBe('video games');
 
   });
-
-  it('can retrieve Barry by ID', () => {
-    todoComponent.setId('58895985847a6c1445ec4048');
-    expect(todoComponent.todo).toBeDefined();
-    expect(todoComponent.todo.owner).toBe('Barry');
-    expect(todoComponent.todo.status).toBe('true');
-    expect(todoComponent.todo.body).toBe('Deserunt velit reprehenderit deserunt sunt excepteur sit eu eiusmod in voluptate aute minim mollit. Esse aliqua esse officia do proident non consequat non mollit..');
-    expect(todoComponent.todo.category).toBe('homework');
 
     it('returns undefined for Jesus', () => {
       todoComponent.setId('Jesus');
@@ -89,4 +81,3 @@ describe('Todo component', () => {
     });
 
   });
-});

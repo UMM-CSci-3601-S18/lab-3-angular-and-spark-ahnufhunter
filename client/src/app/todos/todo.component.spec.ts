@@ -29,21 +29,21 @@ describe('Todo list', () => {
         {
           id: "58895985a22c04e761776d54",
           owner: "Blanche",
-          status: 'false',
+          status: false,
           body: "In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.",
           category: "software design"
         },
         {
           id: "58895985c1849992336c219b",
           owner: "Fry",
-          status: 'false',
+          status: false,
           body: "Ipsum esse est ullamco magna tempor anim laborum non officia deserunt veniam commodo. Aute minim incididunt ex commodo.",
           category: "video games"
         },
         {
           id: "58895985847a6c1445ec4048",
           owner: "Barry",
-          status: 'true',
+          status: true,
           body: "Deserunt velit reprehenderit deserunt sunt excepteur sit eu eiusmod in voluptate aute minim mollit. Esse aliqua esse officia do proident non consequat non mollit.",
           category: "homework"
         }
@@ -87,7 +87,7 @@ describe('Todo list', () => {
   });
 
   it('contains a todo with the status true', () => {
-    expect(todoList.todos.some((todo: Todo) => todo.status === 'true')).toBe(true);
+    expect(todoList.todos.some((todo: Todo) => todo.status === true)).toBe(true);
   });
 
   it('contains a category named \'software design\'', () => {
@@ -103,7 +103,7 @@ describe('Todo list', () => {
   });
 
   it('has two todos whose statuses are false', () => {
-    expect(todoList.todos.filter((todo: Todo) => todo.status === 'false').length).toBe(2);
+    expect(todoList.todos.filter((todo: Todo) => todo.status === false).length).toBe(2);
   });
 
   it('contains only one category named \'homework\'', () => {
