@@ -44,6 +44,6 @@ mat-card{
 
 /* Changes the center background image */
 mat-card-content{
-  background-image: url("https://images.designtrends.com/wp-content/uploads/2015/11/24070950/Brown-Backgrounds34.jpg");
+  background-color:rebeccapurple;
 }
 
