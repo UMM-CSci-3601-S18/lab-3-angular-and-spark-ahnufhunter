@@ -38,16 +38,4 @@ describe('User list', () => {
         expect(page.getUniqueUser("lynnferguson@niquent.com")).toEqual("Lynn Ferguson");
     });
 
-    it('should click on the age 27 times and return 3 elements', () => {
-        page.navigateTo();
-        page.getUserByAge();
-        for (let i = 0; i < 27; i++) {
-            page.selectUpKey();
-        }
-
-        expect(page.getUniqueUser("stokesclayton@momentia.com")).toEqual("Stokes Clayton");
-
-        expect(page.getUniqueUser("merrillparker@escenta.com")).toEqual("Merrill Parker");
-
-    });
 });
