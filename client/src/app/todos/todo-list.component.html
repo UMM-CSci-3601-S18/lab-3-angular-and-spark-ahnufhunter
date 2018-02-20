@@ -1,23 +1,23 @@
 <div layout-gt-sm="row">
   <div flex-gt-sm="80" flex-offset-gt-sm="10">
     <mat-card>
-      <p style="text-align:center;"><img src="http://friendsofmedellin.com/wp-content/uploads/2018/01/To-do-FOM.png"></p>
+      <mat-card-title id="todo-list-title">Todos</mat-card-title>
       <mat-divider></mat-divider>
       <mat-card-content>
         <mat-form-field>
-          <input matInput id="todoOwner" #input placeholder="Owner" (input)="todoOwner = $event.target.value">
+          <input matInput id="todoOwner" #input placeholder="Filter by owner" (input)="todoOwner = $event.target.value">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput id="todoCategory" #input placeholder="Category" (input)="todoCategory = $event.target.value">
+          <input matInput id="todoCategory" #input placeholder="Filter by category" (input)="todoCategory = $event.target.value">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput id="todoBody" #input placeholder="Body" (input)="todoBody = $event.target.value">
+          <input matInput id="todoBody" #input placeholder="Filter by body" (input)="todoBody = $event.target.value">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput id="todoStatus" #input placeholder="Status(complete/incomplete)" (input)="todoStatus = $event.target.value">
+          <input matInput id="todoStatus" #input placeholder="Filter by status" (input)="todoStatus = $event.target.value">
         </mat-form-field>
 
         <!--<mat-form-field>-->
@@ -28,13 +28,13 @@
           <mat-expansion-panel #elem [id]="todo.owner" *ngFor="let todo of this.filterTodos(todoOwner, todoCategory, todoBody, todoStatus)">
             <mat-expansion-panel-header>
 
-              <mat-panel-title matTooltip="Status: {{todo.status}}">{{todo.owner}}</mat-panel-title>
+              <mat-panel-title matTooltip="Category: {{todo.category}}">{{todo.owner}}</mat-panel-title>
 
             </mat-expansion-panel-header>
-            <mat-panel-description>Owner: {{todo.owner}}</mat-panel-description>
-            <mat-panel-description>Category: {{todo.category}}</mat-panel-description>
-            <mat-panel-description>Body: {{todo.body}}</mat-panel-description>
-            <mat-panel-description>Status: {{todo.status}}.</mat-panel-description>
+            <mat-panel-description>{{todo.owner}} is the Owner of this todo.</mat-panel-description>
+            <mat-panel-description>{{todo.category}} is the category of this todo.</mat-panel-description>
+            <mat-panel-description>The body is {{todo.body}}</mat-panel-description>
+            <mat-panel-description>The status is {{todo.status}}.</mat-panel-description>
 
 
           </mat-expansion-panel>
