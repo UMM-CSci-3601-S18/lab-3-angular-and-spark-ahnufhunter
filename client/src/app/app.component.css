@@ -1,6 +1,6 @@
 /*changes the entire background */
 td-layout-nav{
-  background-color: black;
+  background-image: url("https://s3.amazonaws.com/nightlife2-webapp/img/background4.jpg");
 }
 
 /*color for the area below home, user, todo */
