@@ -45,6 +45,6 @@ mat-card{
 
 /* Changes the center */
 mat-card-content{
-  background-color: rebeccapurple;
+  background-image: url("https://s3.amazonaws.com/nightlife2-webapp/img/background4.jpg");
 }
 
