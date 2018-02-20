@@ -57,6 +57,13 @@ export class TodoPage {
     browser.actions().sendKeys(Key.BACK_SPACE).perform();
   }
 
+  getUniqueTodo2(owner:string) {
+    let todo=element(by.id(owner)).getText();
+    this.highlightElement(by.id(owner));
+
+    return todo;
+  }
+
   getUniqueTodo(category:string) {
     let todo = element(by.id(category)).getText();
     this.highlightElement(by.id(category));

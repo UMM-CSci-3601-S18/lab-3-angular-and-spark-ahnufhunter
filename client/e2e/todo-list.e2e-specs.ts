@@ -57,4 +57,14 @@ describe('Todo list', () => {
     expect(page.getUniqueTodo("video games")).toEqual("Barry");
   });
 
+  it('should type something in filter owner text field and check that it returned correct element', () => {
+    page.navigateTo();
+    page.typeAOwner("Bar");
+    expect(page.getUniqueTodo2("Barry")).toEqual("Barry");
+    page.repeatBackspace(3);
+    page.typeAOwner("Fr");
+    expect(page.getUniqueTodo2("Fry")).toEqual("Fry");
+  });
+
 });
+
