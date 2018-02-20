@@ -32,6 +32,7 @@
  
  
 For our End to End testing that we used Karma and Angular Spark Lab to moderate are:
+We had 4 tests and we chose to check if the owner name pops up on first , the specific calls we require.
 (1) should get and highlight Todo owner attribute
 (2) should type something in filter owner text field and check that it returned correct element
 (3) should type something in filter category text field and check that it returned correct element
@@ -46,6 +47,6 @@ For our End to End testing that we used Karma and Angular Spark Lab to moderate 
   Compare bcd62e8..a3bb9eb 
   Branch master 
   welch298 avatar welch298 authored and committed
-  #29 passed
+  #30 passed
   Ran for 2 min 47 sec
-  20 minutes ago
+  2 minutes ago
