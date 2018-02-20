@@ -12,28 +12,38 @@
   padding-right: 10px;
 }
 
+/* Changes the todo at the top of the page */
 #todo-list-title{
-  color: red;
+  color: green;
 }
 
-#todoOwner{
-  color: blue;
+/* Changes the color of the words in the filter when clicked on */
+mat-form-field{
+  color: white;
 }
 
+/* Changes the expansion cards in the center */
 mat-expansion-panel{
-  background-color: orange;
+  background-color: black;
 }
 
+/* Changes the title of the cards */
+mat-panel-title{
+  color: green;
+}
+
+/* Changes the color of the words in the expansion cards in the center */
 mat-panel-description{
   color: green;
 }
 
+/* Changes the title bar */
 mat-card{
-  background-color: purple;
+  background-color: black;
 }
 
+/* Changes the center */
 mat-card-content{
-  background-color: yellow;
+  background-color: rebeccapurple;
 }
-
 

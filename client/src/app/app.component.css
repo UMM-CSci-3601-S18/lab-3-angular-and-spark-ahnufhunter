@@ -1,7 +1,18 @@
+/*changes the entire background */
 td-layout-nav{
   background-color: black;
 }
 
+/*color for the area below home, user, todo */
 td-navigation-drawer{
-  background-color: green;
+  background-color: black;
+}
+
+/*background color for home, user, todo */
+mat-nav-list{
+  background-color: white;
+}
+
+mat-icon{
+  color: white;
 }
