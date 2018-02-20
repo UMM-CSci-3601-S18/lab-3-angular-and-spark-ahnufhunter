@@ -70,4 +70,18 @@ export class TodoPage {
 
     return todo;
   }
+
+  getUniqueTodo3(body:string) {
+    let todo = element(by.id(body)).getText();
+    this.highlightElement(by.id(body));
+
+    return todo;
+  }
+
+  getUniqueTodo4(status:string) {
+    let todo = element(by.id(status)).getText();
+    this.highlightElement(by.id(status));
+
+    return todo;
+  }
 }
