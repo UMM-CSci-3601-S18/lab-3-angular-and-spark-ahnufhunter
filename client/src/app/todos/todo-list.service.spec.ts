@@ -5,27 +5,27 @@ import {HttpClient} from '@angular/common/http';
 import {Todo} from './todo';
 import {TodoListService} from './todo-list.service';
 
-/*describe('Todo list service: ', () => {
+describe('Todo list service: ', () => {
   // A small collection of test todos
   const testTodos: Todo[] = [
     {
       id: '58895985170cd3b13cfafeec',
       owner: 'Workman',
-      status: false,
+      status: 'false',
       body: 'Ea adipisicing amet exercitation excepteur ea reprehenderit nulla reprehenderit eiusmod commodo occaecat. Velit dolor enim Lorem et irure cupidatat ex pariatur non.',
       category: 'homework'
     },
     {
       id: '5889598502be34bcf1e1a333',
       owner: 'Barry',
-      status: false,
+      status: 'false',
       body: 'Consectetur aute enim ullamco fugiat est. Eu dolore fugiat mollit sit ut laborum labore est.',
       category: 'homework'
     },
     {
       id: '58895985921f087bb21de23e',
       owner: 'Dawn',
-      status: true,
+      status: 'true',
       body: 'Sunt exercitation culpa non ad exercitation quis excepteur cupidatat occaecat eiusmod. Aliquip aute anim fugiat elit ad ad cillum dolore qui dolore do commodo culpa velit.',
       category: 'groceries'
     }
@@ -88,4 +88,4 @@ import {TodoListService} from './todo-list.service';
     req.flush(targetTodo);
   });
 });
-*/
+
