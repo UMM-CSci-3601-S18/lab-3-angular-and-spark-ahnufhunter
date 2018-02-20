@@ -66,6 +66,13 @@ export class TodoListComponent implements OnInit {
     if (searchStatus != null) {
       searchStatus = searchStatus.toLocaleLowerCase();
 
+      if(searchStatus.toLocaleLowerCase() == "complete"){
+        searchStatus = "true";
+      }
+      else{
+        searchStatus = "false"
+      }
+
       this.filteredTodos = this.filteredTodos.filter(todo => {
         return !searchStatus || todo.status.toLowerCase().indexOf(searchStatus) !== -1;
       });
