@@ -87,7 +87,7 @@ describe('Todo list', () => {
   });
 
   it('contains a todo with the status true', () => {
-    expect(todoList.todos.some((todo: Todo) => todo.status === bool.toString('true') )).toBe(true);
+    expect(todoList.todos.some((todo: Todo) => todo.status === 'true')).toBe(true);
   });
 
   it('contains a category named \'software design\'', () => {
@@ -103,7 +103,7 @@ describe('Todo list', () => {
   });
 
   it('has two todos whose statuses are false', () => {
-    expect(todoList.todos.filter((todo: Todo) => todo.status === bool.toString('false')).length).toBe(2);
+    expect(todoList.todos.filter((todo: Todo) => todo.status === 'false').length).toBe(2);
   });
 
   it('contains only one category named \'homework\'', () => {

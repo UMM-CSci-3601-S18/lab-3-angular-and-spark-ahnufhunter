@@ -1,145 +1,92 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Observable} from 'rxjs/Observable';
-import {FormsModule} from '@angular/forms';
-import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
-
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-
-import {CustomModule} from '../custom.module';
-
 import {Todo} from './todo';
-import {TodoListComponent} from './todo-list.component';
+import {TodoComponent} from './todo.component';
 import {TodoListService} from './todo-list.service';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
-describe('Todo list', () => {
+describe('Todo component', () => {
 
-  let todoList: TodoListComponent;
-  let fixture: ComponentFixture<TodoListComponent>;
+  let todoComponent: TodoComponent;
+  let fixture: ComponentFixture<TodoComponent>;
 
   let todoListServiceStub: {
-    getTodos: () => Observable<Todo[]>
+    getTodoById: (todoId: string) => Observable<Todo>
   };
 
   beforeEach(() => {
-    // stub TodoService for test purposes
+    // stub UserService for test purposes
     todoListServiceStub = {
-      getTodos: () => Observable.of([
+      getTodoById: (todoId: string) => Observable.of([
         {
-          id: '58895985170cd3b13cfafeec',
-          owner: 'Workman',
+          id: "58895985a22c04e761776d54",
+          owner: "Blanche",
           status: 'false',
-          body: 'Ea adipisicing amet exercitation excepteur ea reprehenderit nulla reprehenderit eiusmod commodo occaecat. Velit dolor enim Lorem et irure cupidatat ex pariatur non.',
-          category: 'homework'
+          body: "In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.",
+          category: "software design"
         },
         {
-          id: '5889598502be34bcf1e1a333',
-          owner: 'Barry',
+          id: "58895985c1849992336c219b",
+          owner: "Fry",
           status: 'false',
-          body: 'Consectetur aute enim ullamco fugiat est. Eu dolore fugiat mollit sit ut laborum labore est.',
-          category: 'homework',
+          body: "Ipsum esse est ullamco magna tempor anim laborum non officia deserunt veniam commodo. Aute minim incididunt ex commodo.",
+          category: "video games"
         },
         {
-          id: '58895985921f087bb21de23e',
-          owner: 'Dawn',
+          id: "58895985847a6c1445ec4048",
+          owner: "Barry",
           status: 'true',
-          body: 'Sunt exercitation culpa non ad exercitation quis excepteur cupidatat occaecat eiusmod. Aliquip aute anim fugiat elit ad ad cillum dolore qui dolore do commodo culpa velit.',
-          category: 'groceries'
-        }
-      ])
+          body: "Deserunt velit reprehenderit deserunt sunt excepteur sit eu eiusmod in voluptate aute minim mollit. Esse aliqua esse officia do proident non consequat non mollit.",
+          category: "homework"
+        },
+      ].find(todo => todo.id === todoId))
     };
 
     TestBed.configureTestingModule({
-      imports: [CustomModule],
-      declarations: [TodoListComponent],
-      // providers:    [ TodoListService ]  // NO! Don't provide the real service!
-      // Provide a test-double instead
-      providers: [{provide: TodoListService, useValue: todoListServiceStub},
-        {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}]
-
+      declarations: [TodoComponent],
+      providers: [{provide: TodoListService, useValue: todoListServiceStub}]
     });
   });
 
   beforeEach(async(() => {
     TestBed.compileComponents().then(() => {
-      fixture = TestBed.createComponent(TodoListComponent);
-      todoList = fixture.componentInstance;
-      fixture.detectChanges();
+      fixture = TestBed.createComponent(TodoComponent);
+      todoComponent = fixture.componentInstance;
     });
   }));
 
-  it('contains all the todos', () => {
-    expect(todoList.todos.length).toBe(3);
+  it('can retrieve Blanche by ID', () => {
+    todoComponent.setId('Blanche');
+    expect(todoComponent.todo).toBeDefined();
+    expect(todoComponent.todo.owner).toBe('Blanche');
+    expect(todoComponent.todo.status).toBe('false');
+    expect(todoComponent.todo.body).toBe('In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.');
+    expect(todoComponent.todo.category).toBe('software design');
+
   });
 
-  it('contains a todo owner \'Workman\'', () => {
-    expect(todoList.todos.some((todo: Todo) => todo.owner === 'Workman')).toBe(true);
+  it('can retrieve Fry by ID', () => {
+    todoComponent.setId('58895985c1849992336c219b');
+    expect(todoComponent.todo).toBeDefined();
+    expect(todoComponent.todo.owner).toBe('Fry');
+    expect(todoComponent.todo.status).toBe('false');
+    expect(todoComponent.todo.body).toBe('Ipsum esse est ullamco magna tempor anim laborum non officia deserunt veniam commodo. Aute minim incididunt ex commodo.');
+    expect(todoComponent.todo.category).toBe('video games');
+
   });
 
-  it('contain a todo owner \'Barry\'', () => {
-    expect(todoList.todos.some((todo: Todo) => todo.owner === 'Barry')).toBe(true);
-  });
+  it('can retrieve Barry by ID', () => {
+    todoComponent.setId('58895985847a6c1445ec4048');
+    expect(todoComponent.todo).toBeDefined();
+    expect(todoComponent.todo.owner).toBe('Barry');
+    expect(todoComponent.todo.status).toBe('true');
+    expect(todoComponent.todo.body).toBe('Deserunt velit reprehenderit deserunt sunt excepteur sit eu eiusmod in voluptate aute minim mollit. Esse aliqua esse officia do proident non consequat non mollit..');
+    expect(todoComponent.todo.category).toBe('homework');
 
-  it('doesn\'t contain a todo owner \'Jesus\'', () => {
-    expect(todoList.todos.some((todo: Todo) => todo.owner === 'Jesus')).toBe(false);
-  });
-});
-
-  it('todo list filters by status', () => {
-    expect(todoList.filteredTodos.stringValue).toBe(3);
-    todoList.todoStatus = 'true';
-    const a: Observable<Todo[]> = todoList.refreshTodos();
-    a.do(x => Observable.of(x))
-      .subscribe(x => expect(todoList.filteredTodos.length).toBe(2));
-  });
-
-  it('todo list filters by owner and status', () => {
-    expect(todoList.filteredTodos.length).toBe(3);
-    todoList.todoStatus = 'true';
-    todoList.todoOwner = 'r';
-    const a: Observable<Todo[]> = todoList.refreshTodos();
-    a.do(x => Observable.of(x))
-      .subscribe(x => expect(todoList.filteredTodos.length).toBe(1));
-  });
-
-});
-
-describe('Misbehaving Todo List', () => {
-  let todoList: TodoListComponent;
-  let fixture: ComponentFixture<TodoListComponent>;
-
-  let todoListServiceStub: {
-    getTodos: () => Observable<Todo[]>
-  };
-
-  beforeEach(() => {
-    // stub TodoService for test purposes
-    todoListServiceStub = {
-      getTodos: () => Observable.create(observer => {
-        observer.error('Error-prone observable');
-      })
-    };
-
-    TestBed.configureTestingModule({
-      imports: [FormsModule, CustomModule],
-      declarations: [TodoListComponent],
-      providers: [{provide: TodoListService, useValue: todoListServiceStub},
-        {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}]
+    it('returns undefined for Jesus', () => {
+      todoComponent.setId('Jesus');
+      expect(todoComponent.todo).not.toBeDefined();
     });
-  });
 
-  beforeEach(async(() => {
-    TestBed.compileComponents().then(() => {
-      fixture = TestBed.createComponent(TodoListComponent);
-      todoList = fixture.componentInstance;
-      fixture.detectChanges();
-    });
-  }));
-
-  it('generates an error if we don\'t set up a TodoListService', () => {
-    // Since the observer throws an error, we don't expect todos to be defined.
-    expect(todoList.todos).toBeUndefined();
   });
 });
-
-
