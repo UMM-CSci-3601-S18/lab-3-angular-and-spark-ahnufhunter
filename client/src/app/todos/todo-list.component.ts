@@ -14,7 +14,6 @@ export class TodoListComponent implements OnInit {
   // These are public so that tests can reference them (.spec.ts)
   public todos: Todo[];
   public filteredTodos: Todo[];
-
   public todoOwner: string;
   public todoCategory: string;
   public todoBody: string;
@@ -64,19 +63,24 @@ export class TodoListComponent implements OnInit {
 
     // Filter by status
     if (searchStatus != null) {
-      searchStatus = searchStatus.toLocaleLowerCase();
 
-      if(searchStatus.toLocaleLowerCase() == "complete"){
-        searchStatus = "true";
-      }
-      else{
-        searchStatus = "false"
+      let theStatus: boolean;
+
+      if (searchStatus === "complete") {
+        theStatus = true;
+
+      } else if (searchStatus === "incomplete") {
+        theStatus = false;
+
+      } else {
+        return this.filteredTodos;
       }
 
       this.filteredTodos = this.filteredTodos.filter(todo => {
-        return !searchStatus || todo.status.toLowerCase().indexOf(searchStatus) !== -1;
+        return !searchStatus || todo.status === Boolean(theStatus);
       });
     }
+
     return this.filteredTodos;
   }
 
