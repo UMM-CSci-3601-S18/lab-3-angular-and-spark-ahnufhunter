@@ -14,23 +14,24 @@ export class TodoListComponent implements OnInit {
   // These are public so that tests can reference them (.spec.ts)
   public todos: Todo[];
   public filteredTodos: Todo[];
+
   public todoOwner: string;
-  public todoStatus: string;
-  public todoBody: string;
   public todoCategory: string;
+  public todoBody: string;
+  public todoStatus: string;
 
 
-  // Inject the TodoListService into thiAges component.
+  // Inject the TodoListService into this component.
   // That's what happens in the following constructor.
   //
   // We can call upon the service for interacting
   // with the server.
-
   constructor(private todoListService: TodoListService) {
 
   }
 
-  public filterTodos(searchOwner: string, searchStatus: string, searchBody: string, searchCategory: string): Todo[] {
+  public filterTodos(searchOwner: string, searchCategory: string, searchBody: string, searchStatus: string): Todo[] {
+
 
     this.filteredTodos = this.todos;
 
@@ -69,7 +70,6 @@ export class TodoListComponent implements OnInit {
         return !searchStatus || todo.status.toLowerCase().indexOf(searchStatus) !== -1;
       });
     }
-
     return this.filteredTodos;
   }
 
