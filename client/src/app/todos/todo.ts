@@ -1,7 +1,7 @@
 export interface Todo {
   id: string;
   owner: string;
-  status: string; /*come back to this */
+  status: string;
   body: string;
   category: string;
 }
