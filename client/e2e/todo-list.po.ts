@@ -19,6 +19,15 @@ export class TodoPage {
     return browser.executeScript(setStyle, element(byObject).getWebElement(), 'color: red; background-color: yellow;');
   }
 
+  // We defined this method so that we can backspace longer strings without having to call
+  // the .backspace() method many times.
+  repeatBackspace(counter: number) {
+    while (counter > 0) {
+      this.backspace();
+      counter--;
+    }
+  }
+
   getTodoTitle() {
     let title = element(by.id('todo-list-title')).getText();
     this.highlightElement(by.id('todo-list-title'));
@@ -32,20 +41,25 @@ export class TodoPage {
     input.sendKeys(owner);
   }
 
-  getTodoByCategory() {
-    let input = element(by.id('todoOwner'));
+  typeACategory(category: string) {
+    let input = element(by.id('todoCategory'));
     input.click();
-    input.sendKeys(Key.TAB);
+    input.sendKeys(category);
+  }
+
+  typeABody(body: string) {
+    let input = element(by.id('todoBody'));
+    input.click();
+    input.sendKeys(body);
   }
 
   backspace(){
     browser.actions().sendKeys(Key.BACK_SPACE).perform();
   }
 
-
-  getUniqueTodo(body:string) {
-    let todo = element(by.id(body)).getText();
-    this.highlightElement(by.id(body));
+  getUniqueTodo(category:string) {
+    let todo = element(by.id(category)).getText();
+    this.highlightElement(by.id(category));
 
     return todo;
   }
