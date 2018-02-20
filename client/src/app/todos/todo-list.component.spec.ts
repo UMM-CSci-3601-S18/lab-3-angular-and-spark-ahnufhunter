@@ -23,18 +23,11 @@ describe('Todo component', () => {
           owner: "Dawn",
           status: true,
           body: "Deserunt voluptate nulla minim amet in do. Adipisicing magna fugiat tempor fugiat irure aute voluptate.",
-          category: "software design"
+          category: "homework"
         },
         {
-          id: "58895985c1849992336c219b",
-          owner: "Fry",
-          status: false,
-          body: "Ipsum esse est ullamco magna tempor anim laborum non officia deserunt veniam commodo. Aute minim incididunt ex commodo.",
-          category: "video games"
-        },
-        {
-          id: "58895985847a6c1445ec4048",
-          owner: "Barry",
+          id: "58895985d70c9fd167056ed7",
+          owner: "Roberta",
           status: true,
           body: "Deserunt velit reprehenderit deserunt sunt excepteur sit eu eiusmod in voluptate aute minim mollit. Esse aliqua esse officia do proident non consequat non mollit.",
           category: "homework"
@@ -55,23 +48,23 @@ describe('Todo component', () => {
     });
   }));
 
-  it('can retrieve Blanche by ID', () => {
-    todoComponent.setId('58895985a22c04e761776d54');
+  it('can retrieve Dawn by ID', () => {
+    todoComponent.setId('588959850599df780df04d5d');
     expect(todoComponent.todo).toBeDefined();
-    expect(todoComponent.todo.owner).toBe('Blanche');
-    expect(todoComponent.todo.status).toBe(false);
-    expect(todoComponent.todo.body).toBe('In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.');
-    expect(todoComponent.todo.category).toBe('software design');
+    expect(todoComponent.todo.owner).toBe('Dawn');
+    expect(todoComponent.todo.status).toBe(true);
+    expect(todoComponent.todo.body).toBe('Deserunt voluptate nulla minim amet in do. Adipisicing magna fugiat tempor fugiat irure aute voluptate.');
+    expect(todoComponent.todo.category).toBe('homework');
 
   });
 
-  it('can retrieve Fry by ID', () => {
-    todoComponent.setId('58895985c1849992336c219b');
+  it('can retrieve Roberta by ID', () => {
+    todoComponent.setId('58895985d70c9fd167056ed7');
     expect(todoComponent.todo).toBeDefined();
-    expect(todoComponent.todo.owner).toBe('Fry');
-    expect(todoComponent.todo.status).toBe(false);
-    expect(todoComponent.todo.body).toBe('Ipsum esse est ullamco magna tempor anim laborum non officia deserunt veniam commodo. Aute minim incididunt ex commodo.');
-    expect(todoComponent.todo.category).toBe('video games');
+    expect(todoComponent.todo.owner).toBe('Roberta');
+    expect(todoComponent.todo.status).toBe(true);
+    expect(todoComponent.todo.body).toBe('Deserunt velit reprehenderit deserunt sunt excepteur sit eu eiusmod in voluptate aute minim mollit. Esse aliqua esse officia do proident non consequat non mollit.');
+    expect(todoComponent.todo.category).toBe('homework');
 
   });
 
