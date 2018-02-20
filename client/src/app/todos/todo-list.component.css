@@ -19,7 +19,7 @@
 
 /* Changes the color of the words in the filter when clicked on */
 mat-form-field{
-  color: white;
+  color: Red;
 }
 
 /* Changes the expansion cards in the center */
@@ -42,8 +42,8 @@ mat-card{
   background-color: black;
 }
 
-/* Changes the center */
+/* Changes the center background image */
 mat-card-content{
-  background-image: url("https://s3.amazonaws.com/nightlife2-webapp/img/background4.jpg");
+  background-image: url("https://images.designtrends.com/wp-content/uploads/2015/11/24070950/Brown-Backgrounds34.jpg");
 }
 
